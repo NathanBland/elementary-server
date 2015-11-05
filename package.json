@@ -1,0 +1,35 @@
+{
+  "name": "elementary-server",
+  "version": "1.0.0",
+  "description": "A server for the elementary note application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NathanBland/elementary-server.git"
+  },
+  "keywords": [
+    "notes",
+    "server",
+    "api",
+    "REST"
+  ],
+  "author": "Nathan Bland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NathanBland/elementary-server/issues"
+  },
+  "homepage": "https://github.com/NathanBland/elementary-server#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "jwt-simple": "^0.3.1",
+    "mongoose": "^4.2.4",
+    "passport": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^3.1.0"
+  }
+}
