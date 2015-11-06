@@ -1,3 +1,5 @@
+.vscode
+routes/jsconfig.json
 # Logs
 logs
 *.log
