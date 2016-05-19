@@ -32,6 +32,7 @@ passport.use(new BearerStrategy(
 passport.use(new LocalStrategy(User.authenticate()))
 
 router.post('/register', function(req, res, next) {
+    console.log('register:', req.body)
     User.register(new User({
         username: req.body.username
     }), req.body.password, function(err, user) {

@@ -2,13 +2,13 @@ var express = require('express')
 var router = module.exports = express.Router()
 var Note = require('../../../../models/Note')
 
-router.route('/') // this is /api/v1/note
+router.route('/') // this is /api/v1/content/note
     .get(function(req, res, next) {
         req.user.getNotes()
-          .sort('updated')
+          .sort('-updated')
           .exec()
           .then(
-              notes => res.status(200).json(notes),
+              notes => res.status(200).json({data :notes}),
               err => res.status(400).json({'error': 'Internal Server Error', err })
            );
     })
@@ -18,7 +18,7 @@ router.route('/') // this is /api/v1/note
             title: req.body.title || 'Note on ' + new Date(),
             content: req.body.content,
             alias: alias,
-            user_id: req.user.user._id
+            user_id: req.user._id
         })
         .save()
         .then(
@@ -32,7 +32,7 @@ router.route('/:alias')
     .get(function(req, res, next) {
         Note.findOne({
             alias: req.params.alias,
-            user_id: req.user.user._id
+            user_id: req.user._id
         })
         .sort('-_id')
         .then(
@@ -61,7 +61,7 @@ router.route('/:alias')
         Note
           .findOneAndRemove({
               alias: req.params.alias, 
-              user_id: req.user.user_id
+              user_id: req.user._id
           })
           .exec()
           .then(
